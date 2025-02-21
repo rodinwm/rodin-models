@@ -1,0 +1,25 @@
+{
+  "name": "@rodin/models",
+  "version": "1.0.0",
+  "description": "Model architecture for RODIN apps and services",
+  "main": "index.js",
+  "scripts": {
+    "release:major": "npm version $(semver $npm_package_version -i major) && npm publish --tag latest",
+    "release:minor": "npm version $(semver $npm_package_version -i minor) && npm publish --tag latest",
+    "release:patch": "npm version $(semver $npm_package_version -i patch) && npm publish --tag latest",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PROJET-RODIN/rodin-models.git"
+  },
+  "author": "Alexandre TAHI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PROJET-RODIN/rodin-models/issues"
+  },
+  "homepage": "https://github.com/PROJET-RODIN/rodin-models#readme",
+  "publishConfig": {
+    "@rodin:registry": "https://npm.pkg.github.com"
+  }
+}
