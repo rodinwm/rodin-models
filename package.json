@@ -1,5 +1,5 @@
 {
-  "name": "@rodin/models",
+  "name": "@rod1n/models",
   "version": "1.0.0",
   "description": "Model architecture for RODIN apps and services",
   "main": "index.js",
