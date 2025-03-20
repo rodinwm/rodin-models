@@ -1,7 +1,5 @@
 import DatabaseEntity from "./DatabaseEntity";
 
-import DatabaseEntity from "./DatabaseEntity";
-
 export default class User extends DatabaseEntity {
   username: string;
   pseudo: string;
