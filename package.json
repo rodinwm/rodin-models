@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/PROJET-RODIN/rodin-models#readme",
   "publishConfig": {
-    "@rodin:registry": "https://npm.pkg.github.com"
+    "@rod1n:registry": "https://npm.pkg.github.com"
   }
 }
