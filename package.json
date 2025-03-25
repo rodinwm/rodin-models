@@ -1,5 +1,5 @@
 {
-  "name": "@rod1n/rodin-models",
+  "name": "@rodinwm/rodin-models",
   "version": "1.0.0",
   "description": "Model architecture for RODIN apps and services",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PROJET-RODIN/rodin-models.git"
+    "url": "git+https://github.com/rodinwm/rodin-models.git"
   },
   "author": "Alexandre TAHI",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PROJET-RODIN/rodin-models/issues"
+    "url": "https://github.com/rodinwm/rodin-models/issues"
   },
-  "homepage": "https://github.com/PROJET-RODIN/rodin-models#readme",
+  "homepage": "https://github.com/rodinwm/rodin-models#readme",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }

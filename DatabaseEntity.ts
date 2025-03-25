@@ -10,7 +10,7 @@ export default abstract class DatabaseEntity {
    * Constructor for DatabaseEntity.
    * @param json JSON object to create instance of this object.
    */
-  constructor(json: any) {
+  protected constructor(json: any) {
     this.id = json.id;
     this.created_at = new Date(json.created_at);
     this.updated_at = json.updated_at ? new Date(json.updated_at) : null;

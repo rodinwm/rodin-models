@@ -1,7 +1,7 @@
 import User from "./User";
 
 // Module declaration
-declare module "@mrketplace/mrketplace-models" {
+declare module "@rodinwm/rodin-models" {
   export {
     User,
   };
