@@ -29,12 +29,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Set PAT in .npmrc
-        run: |
-          ls -al
-          sed -i 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' .npmrc
-          echo "[SUCCESS] Personal access token replaced in .npmrc file"
+      #- name: Set PAT in .npmrc
+      #  run: |
+      #    ls -al
+      #    sed -i 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' .npmrc
+      #    echo "[SUCCESS] Personal access token replaced in .npmrc file"
 
+      - name: Add NPM user
+        run: npm adduser
 
       - name: Install Node.js dependencies
         run: npm ci # Clean Installation
