@@ -1,4 +1,4 @@
-import User from "./User";
+import User from "./models/User";
 
 // Module declaration
 declare module "@rodinwm/rodin-models" {
