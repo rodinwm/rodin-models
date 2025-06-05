@@ -1,0 +1,212 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+
+
+enum SubscriptionStatus {
+  FREE
+  PREMIUM
+}
+
+enum FriendStatus {
+  PENDING
+  ACCEPTED
+  BLOCKED
+}
+
+enum ExerciseType {
+  REACTIVITY_TEST
+  MEMORY_EXERCISE
+  BREATHING_EXERCISE
+}
+
+
+model User {
+  id                 String             @id @default(uuid())
+  pseudo             String
+  email              String             @unique
+  emailVerified      Boolean            @default(false)
+  phoneNumber        String?
+  passwordHash       String
+  createdAt          DateTime           @default(now())
+  lastLogin          DateTime?
+  subscriptionStatus SubscriptionStatus @default(FREE)
+
+  profession         Profession?        @relation(fields: [professionId], references: [id])
+  professionId       String?
+
+  workSessions       WorkSession[]
+  exerciseResults    ExerciseResult[]
+  challenges         Challenge[]
+  subscriptions      Subscription[]
+  statistics         Statistics?
+  rodPics            RodPic[]
+  leaderboard        Leaderboard?
+
+  friends            Friend[]           @relation("InitiatedFriendships")
+  friendOf           Friend[]           @relation("ReceivedFriendships")
+
+
+}
+
+model Profession {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  users       User[]
+}
+
+model WorkSession {
+  id            String   @id @default(uuid())
+  startTime     DateTime
+  endTime       DateTime
+  workDuration  Int
+  breakDuration Int
+  notes         String?
+
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+}
+
+model CognitiveExercise {
+  id          String     @id @default(uuid())
+  name        String
+  description String
+  duration    Int
+  type        ExerciseType
+  createdAt   DateTime   @default(now())
+
+  ReactivityTest    ReactivityTest?
+  MemoryExercise    MemoryExercise?
+  BreathingExercise BreathingExercise?
+  results           ExerciseResult[]
+}
+
+model ReactivityTest {
+  id               String            @id @default(uuid())
+  targetColor      String
+  distractionColor String
+  maxTargets       Int
+
+  exercise         CognitiveExercise @relation(fields: [exerciseId], references: [id])
+  exerciseId       String            @unique
+}
+
+model MemoryExercise {
+  id               String            @id @default(uuid())
+  patternLength    Int
+  reproductionTime Int
+
+  exercise         CognitiveExercise @relation(fields: [exerciseId], references: [id])
+  exerciseId       String            @unique
+}
+
+model BreathingExercise {
+  id             String            @id @default(uuid())
+  inhaleDuration Int
+  exhaleDuration Int
+  holdDuration   Int?
+
+  exercise       CognitiveExercise @relation(fields: [exerciseId], references: [id])
+  exerciseId     String            @unique
+}
+
+model ExerciseResult {
+  id         String            @id @default(uuid())
+  score      Int
+  date       DateTime          @default(now())
+
+  user       User              @relation(fields: [userId], references: [id])
+  userId     String
+
+  exercise   CognitiveExercise @relation(fields: [exerciseId], references: [id])
+  exerciseId String
+}
+
+model Challenge {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  goal        Int
+
+  reward      Reward   @relation(fields: [rewardId], references: [id])
+  rewardId    String
+
+  users       User[]
+}
+
+model Reward {
+  id             String     @id @default(uuid())
+  name           String
+  description    String
+  pointsRequired Int
+  challenges     Challenge[]
+}
+
+model Subscription {
+  id         String             @id @default(uuid())
+  startDate  DateTime
+  endDate    DateTime?
+  status     SubscriptionStatus @default(FREE)
+
+  user       User               @relation(fields: [userId], references: [id])
+  userId     String
+}
+
+model Statistics {
+  id                String   @id @default(uuid())
+  totalWorkTime     Int
+  totalExerciseTime Int
+  averageScore      Float
+  lastUpdated       DateTime @default(now())
+
+  user              User     @relation(fields: [userId], references: [id])
+  userId            String   @unique
+}
+
+model RodPic {
+  id        String   @id @default(uuid())
+  imageUrl  String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+}
+
+model Leaderboard {
+  id          String   @id @default(uuid())
+  totalPoints Int
+  rank        Int
+  lastUpdated DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @unique
+}
+
+model Friend {
+  id         String      @id @default(uuid())
+  status     FriendStatus @default(PENDING)
+  createdAt  DateTime    @default(now())
+
+  user       User        @relation(fields: [userId], references: [id], name: "InitiatedFriendships")
+  userId     String
+
+  friend     User        @relation(fields: [friendId], references: [id], name: "ReceivedFriendships")
+  friendId   String
+}
+
+
