@@ -43,6 +43,8 @@ jobs:
 
       - name: Build package
         run: npm run build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Publish package
         run: npm publish
