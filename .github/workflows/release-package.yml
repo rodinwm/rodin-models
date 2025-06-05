@@ -41,7 +41,7 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Run tests
+      - name: Build package
         run: npm run build
 
       - name: Publish package
