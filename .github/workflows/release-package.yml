@@ -5,11 +5,11 @@ on:
     branches:
       - main
   release:
-    types: [created]
+    types: [ created ]
   
   workflow_dispatch:
     inputs:
-      # Nothing
+    # Nothing
 
 jobs:
   build-and-publish:
@@ -24,7 +24,7 @@ jobs:
       - name: Get latest GitHub Actions code
         uses: actions/checkout@v4
 
-      - name:  Setup Node.js 20
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -40,6 +40,9 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Run tests
+        run: npm run build
 
       - name: Publish package
         run: npm publish
