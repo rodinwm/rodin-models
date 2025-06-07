@@ -35,3 +35,7 @@ export enum NotificationType {
     Mail = 'mail',
     Flash = 'flash'
 }
+export  enum SubscriptionStatus {
+  FREE = 'free',
+  PREMIUM = 'premium'
+  }
