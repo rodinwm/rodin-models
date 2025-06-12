@@ -13,22 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum SubscriptionStatus {
-  FREE
-  PREMIUM
-}
-
-enum FriendStatus {
-  PENDING
-  ACCEPTED
-  BLOCKED
-}
-
-enum ExerciseType {
-  REACTIVITY_TEST
-  MEMORY_EXERCISE
-  BREATHING_EXERCISE
-}
 
 model User {
  id                 String             @id @default(uuid())
