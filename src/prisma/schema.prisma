@@ -13,10 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
-
-
 enum SubscriptionStatus {
   FREE
   PREMIUM
@@ -34,9 +30,8 @@ enum ExerciseType {
   BREATHING_EXERCISE
 }
 
-
 model User {
-  id                 String             @id @default(uuid())
+ id                 String             @id @default(uuid())
   pseudo             String
   email              String             @unique
   emailVerified      Boolean            @default(false)
@@ -45,6 +40,12 @@ model User {
   createdAt          DateTime           @default(now())
   lastLogin          DateTime?
   subscriptionStatus SubscriptionStatus @default(FREE)
+
+  defaultWorkTime    String?
+  defaultBreakTime   String?
+  exerciseFrequency  String?
+  emergencyCode      String             @default("0000") // EXAMPLE: Provide a default string
+  ageRange           String             @default("UNKNOWN") // EXAMPLE: Provide a default string
 
   profession         Profession?        @relation(fields: [professionId], references: [id])
   professionId       String?
@@ -59,8 +60,6 @@ model User {
 
   friends            Friend[]           @relation("InitiatedFriendships")
   friendOf           Friend[]           @relation("ReceivedFriendships")
-
-
 }
 
 model Profession {
@@ -208,5 +207,3 @@ model Friend {
   friend     User        @relation(fields: [friendId], references: [id], name: "ReceivedFriendships")
   friendId   String
 }
-
-

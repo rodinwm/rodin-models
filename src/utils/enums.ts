@@ -35,3 +35,16 @@ export enum NotificationType {
     Mail = 'mail',
     Flash = 'flash'
 }
+export  enum SubscriptionStatus {
+  FREE = 'free',
+  PREMIUM = 'premium'
+  }
+
+export enum FriendStatus {
+  PENDING = 'pending',
+  REJECTED = 'rejected',
+  ACCEPTED = 'accepted',
+  BLOCKED  = 'blocked'
+  
+}
+
