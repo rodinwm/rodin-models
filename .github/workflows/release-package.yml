@@ -36,7 +36,7 @@ jobs:
           echo "[SUCCESS] Personal access token replaced in .npmrc file"
 
       - name: Install Node.js dependencies
-        run: npm ci # Clean Installation
+        run: npm i # Clean Installation
 
       - name: Run tests
         run: npm test
