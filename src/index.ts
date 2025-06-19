@@ -1,5 +1,5 @@
 // Models
-export { default as prisma } from './prisma/prisma';
+export { default as prismaClient } from './prisma/prisma';
 export * from '@prisma/client';
 
 // Enums
