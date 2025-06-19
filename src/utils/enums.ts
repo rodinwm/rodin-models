@@ -13,14 +13,17 @@ export enum AgeRange {
     Over64 = "Plus de 64 ans"
 }
 
-export enum Profession {
-    Lyceen = "Lycéen(ne)",
-    Etudiant = "Étudiant(e)",
-    Entrepreneur = "Entrepreneur",
-    Chercheur = "Chercheur(se) / scientifique",
-    Manager = "Manager / responsable / PDG",
-    Salarie = "Salarié(e) / Télétravailleur(se)",
-    Autre = "Autre"
+/*
+export enum SubscriptionStatus {
+    FREE = 'free',
+    PREMIUM = 'premium'
+}
+
+export enum FriendStatus {
+    PENDING = 'pending',
+    REJECTED = 'rejected',
+    ACCEPTED = 'accepted',
+    BLOCKED = 'blocked'
 }
 
 export enum ConcentrationExercise {
@@ -36,15 +39,14 @@ export enum NotificationType {
     Flash = 'flash'
 }
 
-export enum SubscriptionStatus {
-    FREE = 'free',
-    PREMIUM = 'premium'
+export enum Profession {
+    Lyceen = "Lycéen(ne)",
+    Etudiant = "Étudiant(e)",
+    Entrepreneur = "Entrepreneur",
+    Chercheur = "Chercheur(se) / scientifique",
+    Manager = "Manager / responsable / PDG",
+    Salarie = "Salarié(e) / Télétravailleur(se)",
+    Autre = "Autre"
 }
 
-export enum FriendStatus {
-    PENDING = 'pending',
-    REJECTED = 'rejected',
-    ACCEPTED = 'accepted',
-    BLOCKED = 'blocked'
-}
-
+ */

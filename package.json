@@ -8,14 +8,16 @@
     "dist"
   ],
   "scripts": {
+    "test": "exit 0",
     "build": "tsc",
     "release:major": "npm version $(semver $npm_package_version -i major) && npm publish --tag latest",
     "release:minor": "npm version $(semver $npm_package_version -i minor) && npm publish --tag latest",
     "release:patch": "npm version $(semver $npm_package_version -i patch) && npm publish --tag latest",
-    "test": "exit 0",
     "prisma:init": "npx prisma generate",
-    "migration:generate": "npx prisma migrate dev --name init",
-    "reset-db:dev": "npm run prisma:init && npm run migration:generate"
+    "migration:generate": "dotenv -e .env -- npx prisma migrate dev --name init",
+    "migration:deploy": "npx prisma migrate deploy",
+    "migration:reset:dev": "dotenv -e .env -- npx prisma migrate reset",
+    "reset-db:dev": "npm run migration:reset:dev && npm run migration:generate"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
+    "dotenv-cli": "^8.0.0",
     "prisma": "^6.9.0"
   }
 }
