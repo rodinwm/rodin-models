@@ -1,4 +1,5 @@
-import { AgeRange, ExerciseFrequency, Profession, SubscriptionStatus } from "./enums";
+import { AgeRange, ExerciseFrequency } from "./enums";
+import type {Profession, SubscriptionStatus} from "@prisma/client";
 
 export interface TimerValue {
     hours: number;

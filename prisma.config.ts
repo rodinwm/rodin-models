@@ -1,5 +1,5 @@
 import * as path from 'node:path';
-import type {PrismaConfig} from 'prisma';
+import type { PrismaConfig } from 'prisma';
 
 export default {
     earlyAccess: true,
