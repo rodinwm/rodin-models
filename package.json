@@ -3,7 +3,9 @@
   "name": "@rodinwm/rodin-models",
   "description": "Model architecture for RODIN apps and services",
   "files": [
-    "dist"
+    "dist",
+    "node_modules/@prisma",
+    "node_modules/.prisma/client"
   ],
   "exports": {
     ".": {
@@ -31,7 +33,7 @@
   },
   "scripts": {
     "test": "exit 0",
-    "build": "tsc",
+    "build": "npm run prisma:init && tsc",
     "release:major": "npm version $(semver $npm_package_version -i major) && npm publish --tag latest",
     "release:minor": "npm version $(semver $npm_package_version -i minor) && npm publish --tag latest",
     "release:patch": "npm version $(semver $npm_package_version -i patch) && npm publish --tag latest",
@@ -39,7 +41,8 @@
     "migration:generate": "dotenv -e .env -- npx prisma migrate dev --name init",
     "migration:deploy": "npx prisma migrate deploy",
     "migration:reset:dev": "dotenv -e .env -- npx prisma migrate reset",
-    "reset-db:dev": "npm run migration:reset:dev && npm run migration:generate"
+    "reset-db:dev": "npm run migration:reset:dev && npm run migration:generate",
+    "generate:enums": "ts-node scripts/generate-enums.ts"
   },
   "repository": {
     "type": "git",
@@ -57,9 +60,6 @@
   "dependencies": {
     "@prisma/client": "^6.9.0",
     "dotenv": "^16.5.0"
-  },
-  "peerDependencies": {
-    "prisma": "^6.9.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
