@@ -58,6 +58,9 @@
     "@prisma/client": "^6.9.0",
     "dotenv": "^16.5.0"
   },
+  "peerDependencies": {
+    "prisma": "^6.9.0"
+  },
   "devDependencies": {
     "@types/node": "^22.15.29",
     "dotenv-cli": "^8.0.0",
