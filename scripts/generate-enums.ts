@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 const SCHEMA_PATH = path.resolve(__dirname, '../prisma/schema.prisma');
-const OUTPUT_PATH = path.resolve(__dirname, '../src/utils/enums.ts');
+const OUTPUT_PATH = path.resolve(__dirname, '../src/generated/enums.ts');
 
 const schema = fs.readFileSync(SCHEMA_PATH, 'utf-8');
 

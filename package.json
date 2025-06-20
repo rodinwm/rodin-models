@@ -4,13 +4,15 @@
   "description": "Model architecture for RODIN apps and services",
   "files": [
     "dist",
-    "node_modules/@prisma",
-    "node_modules/.prisma/client"
+    "src/generated/client"
   ],
   "exports": {
     ".": {
       "import": "./dist/backend.js",
       "require": "./dist/backend.js"
+    },
+    "./client": {
+      "import": "./src/generated/client/index.js"
     },
     "./backend": {
       "import": "./dist/backend.js",
