@@ -3,14 +3,16 @@
     "target": "ES6",
     "module": "CommonJS",
     "declaration": true,
+    "emitDeclarationOnly": false,
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true
   },
   "include": [
-    "src",
+    "src"
   ]
 }

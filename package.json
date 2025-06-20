@@ -2,8 +2,6 @@
   "version": "1.0.0",
   "name": "@rodinwm/rodin-models",
   "description": "Model architecture for RODIN apps and services",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -19,6 +17,16 @@
     "./frontend": {
       "import": "./dist/frontend.js",
       "require": "./dist/frontend.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "frontend": [
+        "dist/frontend.d.ts"
+      ],
+      "backend": [
+        "dist/backend.d.ts"
+      ]
     }
   },
   "scripts": {
@@ -53,6 +61,7 @@
   "devDependencies": {
     "@types/node": "^22.15.29",
     "dotenv-cli": "^8.0.0",
-    "prisma": "^6.9.0"
+    "prisma": "^6.9.0",
+    "typescript": "^5.4.5"
   }
 }
