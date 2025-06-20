@@ -1,8 +1,8 @@
 import './scripts/load-env';
-import {prisma} from "../src";
+import {prismaClient} from "../src/backend";
 
 async function test() {
-    const users = await prisma.user.findMany();
+    const users = await prismaClient.user.findMany();
     console.log(users);
 }
 
