@@ -2,10 +2,22 @@
 CREATE TYPE "SubscriptionStatus" AS ENUM ('FREE', 'PREMIUM');
 
 -- CreateEnum
-CREATE TYPE "FriendStatus" AS ENUM ('PENDING', 'ACCEPTED', 'BLOCKED');
+CREATE TYPE "FriendStatus" AS ENUM ('PENDING', 'ACCEPTED', 'REJECTED');
 
 -- CreateEnum
-CREATE TYPE "ExerciseType" AS ENUM ('REACTIVITY_TEST', 'MEMORY_EXERCISE', 'BREATHING_EXERCISE');
+CREATE TYPE "ConcentrationExercise" AS ENUM ('PODS', 'PATTERNS', 'BREATHING');
+
+-- CreateEnum
+CREATE TYPE "Profession" AS ENUM ('LYCEEN', 'ETUDIANT', 'ENTREPRENEUR', 'CHERCHEUR', 'MANAGER', 'SALARIE', 'AUTRE');
+
+-- CreateEnum
+CREATE TYPE "NotificationType" AS ENUM ('AUTO_SUGGESTIONS', 'MESSAGE', 'MAIL', 'FLASH');
+
+-- CreateEnum
+CREATE TYPE "ExerciseFrequency" AS ENUM ('ONE_PER_SESSION', 'AFTER_EACH_BREAK');
+
+-- CreateEnum
+CREATE TYPE "AgeRange" AS ENUM ('UNDER_18', 'AGE_18_24', 'AGE_25_34', 'AGE_35_44', 'AGE_45_54', 'AGE_55_64', 'OVER_64');
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -23,18 +35,10 @@ CREATE TABLE "User" (
     "exerciseFrequency" TEXT,
     "emergencyCode" TEXT NOT NULL DEFAULT '0000',
     "ageRange" TEXT NOT NULL DEFAULT 'UNKNOWN',
+    "profession" "Profession" NOT NULL,
     "professionId" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "Profession" (
-    "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "description" TEXT,
-
-    CONSTRAINT "Profession_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -56,7 +60,7 @@ CREATE TABLE "CognitiveExercise" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "duration" INTEGER NOT NULL,
-    "type" "ExerciseType" NOT NULL,
+    "type" "ConcentrationExercise" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "CognitiveExercise_pkey" PRIMARY KEY ("id")
@@ -212,9 +216,6 @@ CREATE UNIQUE INDEX "Leaderboard_userId_key" ON "Leaderboard"("userId");
 
 -- CreateIndex
 CREATE INDEX "_ChallengeToUser_B_index" ON "_ChallengeToUser"("B");
-
--- AddForeignKey
-ALTER TABLE "User" ADD CONSTRAINT "User_professionId_fkey" FOREIGN KEY ("professionId") REFERENCES "Profession"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "WorkSession" ADD CONSTRAINT "WorkSession_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
