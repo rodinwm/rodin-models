@@ -1,11 +1,10 @@
-import type {AgeRange, ExerciseFrequency, Profession, SubscriptionStatus} from "@prisma/client";
-
 export interface TimerValue {
     hours: number;
     minutes: number;
     seconds: number;
 }
 
+/*
 export interface UserUpdateData {
     id: string;
     pseudo?: string;
@@ -30,3 +29,4 @@ export interface CreateUserRequestBody {
     profession: Profession;
     subscriptionStatus?: SubscriptionStatus;
 }
+*/
