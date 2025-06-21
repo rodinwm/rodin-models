@@ -12,7 +12,8 @@
       "require": "./dist/backend.js"
     },
     "./client": {
-      "import": "./src/generated/client/index.js"
+      "import": "./src/generated/client/index.js",
+      "require": "./src/generated/client/index.js"
     },
     "./backend": {
       "import": "./dist/backend.js",
