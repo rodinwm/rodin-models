@@ -1,0 +1,20 @@
+# Ne publie pas les sources TypeScript, uniquement le build
+src/
+scripts/
+
+
+# Fichiers de config et outils dev
+*.env
+*.log
+tsconfig.json
+tsconfig.*.json
+jest.config.*
+.eslintrc.*
+.prettierrc.*
+.nyc_output/
+.vscode/
+.idea/
+
+# Évite les fichiers inutiles
+node_modules/
+coverage/

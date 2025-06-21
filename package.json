@@ -4,7 +4,7 @@
   "description": "Model architecture for RODIN apps and services",
   "files": [
     "dist",
-    "src/generated/client"
+    "src/prisma/generated/client"
   ],
   "exports": {
     ".": {
