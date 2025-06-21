@@ -1,6 +1,7 @@
 # Ne publie pas les sources TypeScript, uniquement le build
 src/
 scripts/
+tests/
 
 
 # Fichiers de config et outils dev
