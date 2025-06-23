@@ -69,6 +69,7 @@
     "@types/node": "^22.15.29",
     "dotenv-cli": "^8.0.0",
     "prisma": "^6.9.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
 }
