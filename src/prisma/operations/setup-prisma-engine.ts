@@ -7,10 +7,10 @@ export function setupPrismaEngine() {
     const arch = process.arch;
 
     const binariesMap: Record<string, string> = {
-        'darwin-arm64': 'libquery_engine-darwin-arm64.dylib.node',
-        'darwin-x64': 'libquery_engine-darwin.dylib.node',
-        'linux-x64': 'libquery_engine-debian-openssl-3.0.x.so.node',
-        'win32-x64': 'query_engine-windows.dll.node'
+        'darwin-arm64': 'query-engine-darwin-arm64',
+        'darwin-x64': 'query-engine-darwin',
+        'linux-x64': 'query-engine-debian-openssl-3.0.x',
+        'win32-x64': 'query-engine-windows.exe'
     };
 
     const key = `${platform}-${arch}`;
