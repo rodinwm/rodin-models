@@ -17,7 +17,9 @@ export function setupPrismaEngine() {
     const binary = binariesMap[key];
 
     if (binary) {
-        process.env.PRISMA_QUERY_ENGINE_LIBRARY = `${basePath}/${binary}`;
+        const fullPath = path.join(basePath, binary);
+        process.env.PRISMA_QUERY_ENGINE_LIBRARY = fullPath;
+        console.log('✅ Prisma binary path set to:', fullPath);
     } else {
         console.warn(`⚠️ Unsupported platform for Prisma: ${platform}-${arch}`);
     }
