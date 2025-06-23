@@ -1,4 +1,7 @@
 import {PrismaClient} from '../../dist/generated/client';
+import {setupPrismaEngine} from "./operations/setup-prisma-engine";
+
+setupPrismaEngine();
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
