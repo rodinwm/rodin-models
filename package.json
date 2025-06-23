@@ -46,7 +46,7 @@
     "migration:reset:dev": "dotenv -e .env -- npx prisma migrate reset",
     "reset-db:dev": "npm run migration:reset:dev && npm run migration:generate",
     "generate:enums": "ts-node scripts/generate-enums.ts",
-    "postinstall": "node scripts/copy-engines.ts"
+    "postinstall": "ts-node scripts/copy-engines.ts"
   },
   "repository": {
     "type": "git",
