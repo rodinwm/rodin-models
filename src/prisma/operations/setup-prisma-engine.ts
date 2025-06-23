@@ -1,7 +1,8 @@
 import path from "node:path";
 
 export function setupPrismaEngine() {
-    const basePath = path.resolve(__dirname, '../../../dist/generated/client');
+    const basePath = path.dirname(require.resolve('@rodinwm/rodin-models/backend')) + '/generated/client';
+    console.log(basePath);
     const platform = process.platform;
     const arch = process.arch;
 
