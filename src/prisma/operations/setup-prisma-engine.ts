@@ -1,7 +1,7 @@
-export function setupPrismaEngine() {
-    const basePath = require.resolve('@rodinwm/rodin-models/package.json')
-        .replace(/package\.json$/, 'dist/generated/client');
+import path from "node:path";
 
+export function setupPrismaEngine() {
+    const basePath = path.resolve(__dirname, '../../../dist/generated/client');
     const platform = process.platform;
     const arch = process.arch;
 
