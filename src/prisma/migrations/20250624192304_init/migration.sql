@@ -34,9 +34,8 @@ CREATE TABLE "User" (
     "defaultBreakTime" TEXT,
     "exerciseFrequency" TEXT,
     "emergencyCode" TEXT NOT NULL DEFAULT '0000',
-    "ageRange" TEXT NOT NULL DEFAULT 'UNKNOWN',
+    "ageRange" "AgeRange" NOT NULL,
     "profession" "Profession" NOT NULL,
-    "professionId" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );

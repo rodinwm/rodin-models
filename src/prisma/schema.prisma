@@ -7,7 +7,9 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://rodin:rodin123@localhost:5432/rodin?schema=public"
+
+//  url      = env("DATABASE_URL")
 }
 
 enum SubscriptionStatus {
@@ -74,10 +76,9 @@ model User {
   defaultBreakTime  String?
   exerciseFrequency String?
   emergencyCode     String  @default("0000") // EXAMPLE: Provide a default string
-  ageRange          String  @default("UNKNOWN") // EXAMPLE: Provide a default string
+  ageRange          AgeRange
 
-  profession   Profession
-  professionId String?
+  profession        Profession
 
   workSessions    WorkSession[]
   exerciseResults ExerciseResult[]
