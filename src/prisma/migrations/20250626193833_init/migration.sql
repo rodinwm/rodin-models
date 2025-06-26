@@ -30,13 +30,14 @@ CREATE TABLE "User" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "lastLogin" TIMESTAMP(3),
     "subscriptionStatus" "SubscriptionStatus" NOT NULL DEFAULT 'FREE',
-    "defaultWorkTime" TEXT,
-    "defaultBreakTime" TEXT,
+    "stripeCustomerId" TEXT,
+    "subscriptionID" TEXT,
+    "defaultWorkTime" JSONB,
+    "defaultBreakTime" JSONB,
     "exerciseFrequency" TEXT,
     "emergencyCode" TEXT NOT NULL DEFAULT '0000',
-    "ageRange" TEXT NOT NULL DEFAULT 'UNKNOWN',
+    "ageRange" "AgeRange" NOT NULL,
     "profession" "Profession" NOT NULL,
-    "professionId" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -198,6 +199,9 @@ CREATE UNIQUE INDEX "User_pseudo_key" ON "User"("pseudo");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_stripeCustomerId_key" ON "User"("stripeCustomerId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ReactivityTest_exerciseId_key" ON "ReactivityTest"("exerciseId");

@@ -61,13 +61,14 @@
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
-    "dotenv": "^16.5.0"
+    "dotenv": "^16.5.0",
+    "stripe": "^18.2.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
     "dotenv-cli": "^8.0.0",
     "prisma": "^6.9.0",
-    "typescript": "^5.4.5",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }
