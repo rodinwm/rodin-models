@@ -1,15 +1,12 @@
 generator client {
   provider      = "prisma-client-js"
-  //engineType    = "binary"
   output        = "../../dist/generated/client"
   binaryTargets = ["native", "debian-openssl-3.0.x", "darwin-arm64", "windows"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://rodin:rodin123@localhost:5432/rodin?schema=public"
-
-//  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 enum SubscriptionStatus {
@@ -71,17 +68,16 @@ model User {
   createdAt          DateTime           @default(now())
   lastLogin          DateTime?
   subscriptionStatus SubscriptionStatus @default(FREE)
-  stripeCustomerId String?  @unique
-  subscriptionID   String?
+  stripeCustomerId   String?            @unique
+  subscriptionID     String?
 
-
-  defaultWorkTime   String?
-  defaultBreakTime  String?
+  defaultWorkTime   Json?
+  defaultBreakTime  Json?
   exerciseFrequency String?
-  emergencyCode     String  @default("0000") // EXAMPLE: Provide a default string
+  emergencyCode     String   @default("0000") // EXAMPLE: Provide a default string
   ageRange          AgeRange
 
-  profession        Profession
+  profession Profession
 
   workSessions    WorkSession[]
   exerciseResults ExerciseResult[]
