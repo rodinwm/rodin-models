@@ -64,7 +64,7 @@ model User {
   email              String             @unique
   emailVerified      Boolean            @default(false)
   phoneNumber        String?
-  passwordHash       String
+  password       String
   createdAt          DateTime           @default(now())
   lastLogin          DateTime?
   subscriptionStatus SubscriptionStatus @default(FREE)
