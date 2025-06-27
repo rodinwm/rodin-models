@@ -26,7 +26,7 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "emailVerified" BOOLEAN NOT NULL DEFAULT false,
     "phoneNumber" TEXT,
-    "passwordHash" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "lastLogin" TIMESTAMP(3),
     "subscriptionStatus" "SubscriptionStatus" NOT NULL DEFAULT 'FREE',
