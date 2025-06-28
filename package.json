@@ -3,8 +3,7 @@
   "name": "@rodinwm/rodin-models",
   "description": "Model architecture for RODIN apps and services",
   "files": [
-    "dist",
-    "src/prisma/generated/client"
+    "dist"
   ],
   "exports": {
     ".": {
@@ -12,8 +11,8 @@
       "require": "./dist/backend.js"
     },
     "./client": {
-      "import": "./src/generated/client/index.js",
-      "require": "./src/generated/client/index.js"
+      "import": "./dist/generated/client/index.js",
+      "require": "./dist/generated/client/index.js"
     },
     "./backend": {
       "import": "./dist/backend.js",
@@ -36,13 +35,15 @@
   },
   "scripts": {
     "test": "exit 0",
-    "build": "npm run prisma:init && tsc",
+    "build": "npm run prisma:init && tsc && npm run migration:copy-to-build",
     "release:major": "npm version $(semver $npm_package_version -i major) && npm publish --tag latest",
     "release:minor": "npm version $(semver $npm_package_version -i minor) && npm publish --tag latest",
     "release:patch": "npm version $(semver $npm_package_version -i patch) && npm publish --tag latest",
     "prisma:init": "npx prisma generate",
+    "prisma:schema:copy-to-build": "cp src/prisma/schema.prisma dist/prisma/schema.prisma",
     "migration:generate": "dotenv -e .env -- npx prisma migrate dev --name init",
     "migration:deploy": "npx prisma migrate deploy",
+    "migration:copy-to-build": "cp -R src/prisma/migrations dist/prisma/migrations",
     "migration:reset:dev": "dotenv -e .env -- npx prisma migrate reset",
     "reset-db:dev": "npm run migration:reset:dev && npm run migration:generate"
   },
