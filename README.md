@@ -1,10 +1,7 @@
-# rodin-models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
+# rodin-models
 
-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
+Connexion à npm registry en CLI :
 
-
-gestions de tokens
-1. npm login --scope=@rodinwm --auth-type=legacy --registry=https://npm.pkg.github.com
-
-creation de token
-2. https://github.com/settings/tokens
+```
+npm login --scope=@rodinwm --auth-type=legacy --registry=https://npm.pkg.github.com
+```
