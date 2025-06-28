@@ -35,7 +35,7 @@
   },
   "scripts": {
     "test": "exit 0",
-    "build": "npm run prisma:init && tsc && npm run migration:copy-to-build",
+    "build": "npm run prisma:init && tsc && npm run migration:copy-to-build && npm run prisma:schema:copy-to-build",
     "release:major": "npm version $(semver $npm_package_version -i major) && npm publish --tag latest",
     "release:minor": "npm version $(semver $npm_package_version -i minor) && npm publish --tag latest",
     "release:patch": "npm version $(semver $npm_package_version -i patch) && npm publish --tag latest",
