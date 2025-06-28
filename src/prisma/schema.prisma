@@ -78,6 +78,8 @@ model User {
   exerciseFrequency String?
   emergencyCode     String   @default("0000") // EXAMPLE: Provide a default string
   ageRange          AgeRange
+  isActive          Boolean           @default(true)
+
 
   profession Profession
 
