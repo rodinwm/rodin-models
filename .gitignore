@@ -1,6 +1,7 @@
 # Env
 .env
-.env.local
+.env.*
+!.env.template
 
 # dependencies
 /node_modules
