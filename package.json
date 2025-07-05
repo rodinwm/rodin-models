@@ -45,6 +45,7 @@
     "migration:deploy": "npx prisma migrate deploy",
     "migration:deploy:prod": "dotenv -e .env.production -- npx prisma migrate deploy",
     "migration:copy-to-build": "cp -R src/prisma/migrations dist/prisma/migrations",
+    "migration:reset:prod": "dotenv -e .env.production -- npx prisma migrate reset",
     "migration:reset:dev": "dotenv -e .env -- npx prisma migrate reset",
     "reset-db:dev": "npm run migration:reset:dev && npm run migration:generate"
   },

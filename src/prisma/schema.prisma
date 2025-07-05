@@ -72,6 +72,8 @@ enum TimeSessionType {
 
 model User {
   id                 String             @id @default(uuid())
+  firstname          String
+  lastname           String
   pseudo             String             @unique
   email              String             @unique
   emailVerified      Boolean            @default(false)
@@ -94,11 +96,8 @@ model User {
 
   timeSessions    TimeSession[]
   exerciseResults ConcentrationExerciseResult[]
-  //challenges      Challenge[]
   subscriptions   Subscription[]
-  //statistics      Statistics?
   rodPics         RodPic[]
-  //leaderboard     Leaderboard?
 
   friends  Friend[] @relation("InitiatedFriendships")
   friendOf Friend[] @relation("ReceivedFriendships")
@@ -114,44 +113,6 @@ model TimeSession {
   userId String
 }
 
-/**
- * model CognitiveExercise {
- * id          String                @id @default(uuid())
- * name        String
- * description String
- * duration    Int
- * type        ConcentrationExercise
- * createdAt   DateTime              @default(now())
- * ReactivityTest    ReactivityTest?
- * MemoryExercise    MemoryExercise?
- * BreathingExercise BreathingExercise?
- * results           ExerciseResult[]
- * }
- * model ReactivityTest {
- * id               String @id @default(uuid())
- * targetColor      String
- * distractionColor String
- * maxTargets       Int
- * exercise   CognitiveExercise @relation(fields: [exerciseId], references: [id])
- * exerciseId String            @unique
- * }
- * model MemoryExercise {
- * id               String @id @default(uuid())
- * patternLength    Int
- * reproductionTime Int
- * exercise   CognitiveExercise @relation(fields: [exerciseId], references: [id])
- * exerciseId String            @unique
- * }
- * model BreathingExercise {
- * id             String @id @default(uuid())
- * inhaleDuration Int
- * exhaleDuration Int
- * holdDuration   Int?
- * exercise   CognitiveExercise @relation(fields: [exerciseId], references: [id])
- * exerciseId String            @unique
- * }
- */
-
 model ConcentrationExerciseResult {
   id        String                @id @default(uuid())
   type      ConcentrationExercise
@@ -161,25 +122,6 @@ model ConcentrationExerciseResult {
   user   User   @relation(fields: [userId], references: [id])
   userId String
 }
-
-/**
- * model Challenge {
- * id          String @id @default(uuid())
- * name        String
- * description String
- * goal        Int
- * reward   Reward @relation(fields: [rewardId], references: [id])
- * rewardId String
- * users User[]
- * }
- * model Reward {
- * id             String      @id @default(uuid())
- * name           String
- * description    String
- * pointsRequired Int
- * challenges     Challenge[]
- * }
- */
 
 model Subscription {
   id        String                @id @default(uuid())
@@ -193,18 +135,6 @@ model Subscription {
   userId String
 }
 
-/**
- * model Statistics {
- * id                String   @id @default(uuid())
- * totalWorkTime     Int
- * totalExerciseTime Int
- * averageScore      Float
- * lastUpdated       DateTime @default(now())
- * user   User   @relation(fields: [userId], references: [id])
- * userId String @unique
- * }
- */
-
 model RodPic {
   id        String   @id @default(uuid())
   imageUrl  String
@@ -213,17 +143,6 @@ model RodPic {
   user   User   @relation(fields: [userId], references: [id])
   userId String
 }
-
-/**
- * model Leaderboard {
- * id          String   @id @default(uuid())
- * totalPoints Int
- * rank        Int
- * lastUpdated DateTime @default(now())
- * user   User   @relation(fields: [userId], references: [id])
- * userId String @unique
- * }
- */
 
 model Friend {
   id        String       @id @default(uuid())
