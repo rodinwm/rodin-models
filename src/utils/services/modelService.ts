@@ -1,4 +1,4 @@
-import {AgeRange, ExerciseFrequency, NotificationType, Profession, SubscriptionStatus} from '../frontend';
+import {AgeRange, ExerciseFrequency, NotificationType, Profession, SubscriptionStatus} from '../../frontend';
 
 export class ModelService {
 
