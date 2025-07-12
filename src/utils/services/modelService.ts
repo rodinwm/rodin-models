@@ -1,6 +1,31 @@
-import {AgeRange, ExerciseFrequency, NotificationType, Profession, SubscriptionStatus} from '../../frontend';
+import {AgeRange, ExerciseFrequency, NotificationType, Profession, SubscriptionStatus} from '../enums';
+import {
+    AgeRangeLabels,
+    AppTypeLabels,
+    ConcentrationExerciseLabels,
+    ExerciseFrequencyLabels,
+    FriendStatusLabels,
+    NotificationTypeLabels,
+    ProfessionLabels,
+    SubscriptionFrequencyLabels,
+    SubscriptionStatusLabels,
+    TimeSessionTypeLabels
+} from "../records";
+import {RodinEnum} from "../types";
 
 export class ModelService {
+    private readonly maps: Record<string, Record<string, string>> = {
+        AppType: AppTypeLabels,
+        SubscriptionStatus: SubscriptionStatusLabels,
+        SubscriptionFrequency: SubscriptionFrequencyLabels,
+        FriendStatus: FriendStatusLabels,
+        ConcentrationExercise: ConcentrationExerciseLabels,
+        Profession: ProfessionLabels,
+        NotificationType: NotificationTypeLabels,
+        AgeRange: AgeRangeLabels,
+        TimeSessionType: TimeSessionTypeLabels,
+        ExerciseFrequency: ExerciseFrequencyLabels,
+    };
 
     constructor(
         private readonly onError: (methodName: string, error: any) => void,
@@ -50,6 +75,10 @@ export class ModelService {
         } catch (error) {
             return this.handleError<SubscriptionStatus>(methodName, error);
         }
+    }
+
+    getEnumLabel<T extends RodinEnum>(enumType: T, value: string): string {
+        return this.maps[enumType]?.[value] ?? value;
     }
 
     private handleError<T>(methodName: string, error: any): T[] {
