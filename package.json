@@ -41,13 +41,12 @@
     "release:patch": "npm version $(semver $npm_package_version -i patch) && npm publish --tag latest",
     "prisma:init": "npx prisma generate",
     "prisma:schema:copy-to-build": "cp src/prisma/schema.prisma dist/prisma/schema.prisma",
-    "migration:generate": "dotenv -e .env -- npx prisma migrate dev --name init",
-    "migration:deploy": "npx prisma migrate deploy",
+    "migration:migrate": "dotenv -e .env -- npx prisma migrate dev --name init",
+    "migration:deploy:dev": "dotenv -e .env -- npx prisma migrate deploy",
     "migration:deploy:prod": "dotenv -e .env.production -- npx prisma migrate deploy",
     "migration:copy-to-build": "cp -R src/prisma/migrations dist/prisma/migrations",
-    "migration:reset:prod": "dotenv -e .env.production -- npx prisma migrate reset",
     "migration:reset:dev": "dotenv -e .env -- npx prisma migrate reset",
-    "reset-db:dev": "npm run migration:reset:dev && npm run migration:generate"
+    "reset-db:dev": "dotenv -e .env -- npm run migration:reset:dev && npm run migration:migrate"
   },
   "repository": {
     "type": "git",
