@@ -18,3 +18,6 @@
 
 # Build
 /dist
+
+# Tests
+/tests/coverage

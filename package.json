@@ -34,7 +34,8 @@
     }
   },
   "scripts": {
-    "test": "exit 0",
+    "test": "jest",
+    "test:ci": "jest --ci --reporters=default --reporters=jest-sonar",
     "build": "npm run prisma:init && tsc && npm run migration:copy-to-build && npm run prisma:schema:copy-to-build",
     "release:major": "npm version $(semver $npm_package_version -i major) && npm publish --tag latest",
     "release:minor": "npm version $(semver $npm_package_version -i minor) && npm publish --tag latest",
@@ -67,9 +68,13 @@
     "stripe": "^18.2.1"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^22.15.29",
     "dotenv-cli": "^8.0.0",
+    "jest": "^30.0.4",
+    "jest-sonar": "^0.2.16",
     "prisma": "^6.9.0",
+    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },

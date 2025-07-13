@@ -1,4 +1,19 @@
-import {AgeRange, ExerciseFrequency, NotificationType, Profession, SubscriptionStatus} from '../enums';
+// file: src/utils/services/ModelService.ts
+
+import {
+    AgeRange,
+    AppType,
+    ConcentrationExercise,
+    ExerciseFrequency,
+    FriendStatus,
+    NotificationType,
+    Profession,
+    SubscriptionFrequency,
+    SubscriptionStatus,
+    TimeSessionType
+} from '../../../src/frontend';
+
+
 import {
     AgeRangeLabels,
     AppTypeLabels,
@@ -9,12 +24,13 @@ import {
     ProfessionLabels,
     SubscriptionFrequencyLabels,
     SubscriptionStatusLabels,
-    TimeSessionTypeLabels
-} from "../records";
-import {RodinEnum} from "../types";
+    TimeSessionTypeLabels,
+} from '../records';
+
+import {RodinEnumMap, RodinEnumName} from '../types';
 
 export class ModelService {
-    private readonly maps: Record<string, Record<string, string>> = {
+    private readonly maps: Record<RodinEnumName, Record<string, string>> = {
         AppType: AppTypeLabels,
         SubscriptionStatus: SubscriptionStatusLabels,
         SubscriptionFrequency: SubscriptionFrequencyLabels,
@@ -26,58 +42,43 @@ export class ModelService {
         TimeSessionType: TimeSessionTypeLabels,
         ExerciseFrequency: ExerciseFrequencyLabels,
     };
+    /**
+     * Mapping entre les noms d'enum et les objets enum réels
+     */
+    private readonly enumMap: RodinEnumMap = {
+        AppType,
+        SubscriptionStatus,
+        SubscriptionFrequency,
+        FriendStatus,
+        ConcentrationExercise,
+        Profession,
+        NotificationType,
+        AgeRange,
+        TimeSessionType,
+        ExerciseFrequency,
+    };
 
-    constructor(
-        private readonly onError: (methodName: string, error: any) => void,
-    ) {
+    constructor(private readonly onError: (methodName: string, error: any) => void) {
     }
 
-    getExerciseFrequencies(): ExerciseFrequency[] {
-        const methodName = "getExerciseFrequencies";
+    /**
+     * Récupère dynamiquement les valeurs d'une énum (via son nom)
+     */
+    getEnumValues<T extends RodinEnumName>(enumName: T): string[] {
+        const methodName = `getEnumValues(${enumName})`;
         try {
-            return Object.values(ExerciseFrequency ?? {});
+            const enumObject = this.enumMap[enumName];
+            if (!enumObject) throw new Error(`Enum ${enumName} is not mapped`);
+            return Object.values(enumObject);
         } catch (error) {
-            return this.handleError<ExerciseFrequency>(methodName, error);
+            return this.handleError<string>(methodName, error);
         }
     }
 
-    getAgeRanges(): AgeRange[] {
-        const methodName = "getAgeRanges";
-        try {
-            return Object.values(AgeRange ?? {});
-        } catch (error) {
-            return this.handleError<AgeRange>(methodName, error);
-        }
-    }
-
-    getNotificationTypes(): NotificationType[] {
-        const methodName = "getNotificationTypes";
-        try {
-            return Object.values(NotificationType ?? {});
-        } catch (error) {
-            return this.handleError<NotificationType>(methodName, error);
-        }
-    }
-
-    getProfessions(): Profession[] {
-        const methodName = "getProfessions";
-        try {
-            return Object.values(Profession ?? {});
-        } catch (error) {
-            return this.handleError<Profession>(methodName, error);
-        }
-    }
-
-    getSubscriptionStatus(): SubscriptionStatus[] {
-        const methodName = "getSubscriptionStatus";
-        try {
-            return Object.values(SubscriptionStatus ?? {});
-        } catch (error) {
-            return this.handleError<SubscriptionStatus>(methodName, error);
-        }
-    }
-
-    getEnumLabel<T extends RodinEnum>(enumType: T, value: string): string {
+    /**
+     * Retourne un label lisible pour une valeur d’enum
+     */
+    getEnumLabel<T extends RodinEnumName>(enumType: T, value: string): string {
         return this.maps[enumType]?.[value] ?? value;
     }
 

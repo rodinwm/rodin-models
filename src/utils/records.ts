@@ -1,3 +1,5 @@
+// file: src/utils/records.ts
+
 import {
     AgeRange,
     AppType,
@@ -9,7 +11,7 @@ import {
     SubscriptionFrequency,
     SubscriptionStatus,
     TimeSessionType
-} from "./enums";
+} from "../../src/frontend";
 
 export const AppTypeLabels: Record<AppType, string> = {
     [AppType.WEB]: "Application Web",

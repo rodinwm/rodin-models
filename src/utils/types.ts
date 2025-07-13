@@ -1,3 +1,21 @@
-import {AgeRange, ExerciseFrequency, NotificationType, Profession, SubscriptionStatus} from "./enums";
+// file: src/utils/types.ts
 
-export type RodinEnum = ExerciseFrequency | AgeRange | NotificationType | Profession | SubscriptionStatus;
+export type RodinEnumName =
+    | 'AppType'
+    | 'SubscriptionStatus'
+    | 'SubscriptionFrequency'
+    | 'FriendStatus'
+    | 'ConcentrationExercise'
+    | 'Profession'
+    | 'NotificationType'
+    | 'AgeRange'
+    | 'TimeSessionType'
+    | 'ExerciseFrequency';
+
+export type RodinEnumMap = Record<RodinEnumName, Record<string, string>>;
+
+export type EnumTestCase = {
+    enumName: RodinEnumName;
+    enumObject: Record<string, string>;
+    labels: Record<string, string>;
+};
