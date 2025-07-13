@@ -11,7 +11,7 @@ import {
     SubscriptionFrequency,
     SubscriptionStatus,
     TimeSessionType
-} from "../../src/frontend";
+} from "../frontend";
 
 export const AppTypeLabels: Record<AppType, string> = {
     [AppType.WEB]: "Application Web",
