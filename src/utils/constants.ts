@@ -1,9 +1,7 @@
 // file: src/utils/constants.ts
 
-import {AppType} from "./enums";
 import {
     AgeRangeLabels,
-    AppTypeLabels,
     ConcentrationExerciseLabels,
     ExerciseFrequencyLabels,
     FriendStatusLabels,
@@ -28,7 +26,6 @@ import {
 
 
 export const enumTestCases: EnumTestCase[] = [
-    {enumName: 'AppType', enumObject: AppType, labels: AppTypeLabels},
     {enumName: 'SubscriptionStatus', enumObject: SubscriptionStatus, labels: SubscriptionStatusLabels},
     {enumName: 'SubscriptionFrequency', enumObject: SubscriptionFrequency, labels: SubscriptionFrequencyLabels},
     {enumName: 'FriendStatus', enumObject: FriendStatus, labels: FriendStatusLabels},

@@ -1,7 +1,6 @@
 // file: src/utils/types.ts
 
 export type RodinEnumName =
-    | 'AppType'
     | 'SubscriptionStatus'
     | 'SubscriptionFrequency'
     | 'FriendStatus'

@@ -2,7 +2,6 @@
 
 import {
     AgeRange,
-    AppType,
     ConcentrationExercise,
     ExerciseFrequency,
     FriendStatus,
@@ -12,11 +11,6 @@ import {
     SubscriptionStatus,
     TimeSessionType
 } from "../frontend";
-
-export const AppTypeLabels: Record<AppType, string> = {
-    [AppType.WEB]: "Application Web",
-    [AppType.MOBILE]: "Application Mobile",
-};
 
 export const SubscriptionStatusLabels: Record<SubscriptionStatus, string> = {
     [SubscriptionStatus.FREE]: "Gratuit",

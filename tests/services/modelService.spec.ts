@@ -28,7 +28,7 @@ describe('✅ ModelService', () => {
 
     it('should fallback on raw value if label is missing', () => {
         const unknownValue = 'UNKNOWN_VALUE';
-        const label = service.getEnumLabel('AppType', unknownValue);
+        const label = service.getEnumLabel('ConcentrationExercise', unknownValue);
         expect(label).toBe(unknownValue);
     });
 

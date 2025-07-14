@@ -2,7 +2,6 @@
 
 import {
     AgeRange,
-    AppType,
     ConcentrationExercise,
     ExerciseFrequency,
     FriendStatus,
@@ -16,7 +15,6 @@ import {
 
 import {
     AgeRangeLabels,
-    AppTypeLabels,
     ConcentrationExerciseLabels,
     ExerciseFrequencyLabels,
     FriendStatusLabels,
@@ -31,7 +29,6 @@ import {RodinEnumMap, RodinEnumName} from '../types';
 
 export class ModelService {
     private readonly maps: Record<RodinEnumName, Record<string, string>> = {
-        AppType: AppTypeLabels,
         SubscriptionStatus: SubscriptionStatusLabels,
         SubscriptionFrequency: SubscriptionFrequencyLabels,
         FriendStatus: FriendStatusLabels,
@@ -42,11 +39,11 @@ export class ModelService {
         TimeSessionType: TimeSessionTypeLabels,
         ExerciseFrequency: ExerciseFrequencyLabels,
     };
+
     /**
      * Mapping entre les noms d'enum et les objets enum réels
      */
     private readonly enumMap: RodinEnumMap = {
-        AppType,
         SubscriptionStatus,
         SubscriptionFrequency,
         FriendStatus,
@@ -68,7 +65,6 @@ export class ModelService {
         const methodName = `getEnumValues(${enumName})`;
         try {
             const enumObject = this.enumMap[enumName];
-            if (!enumObject) throw new Error(`Enum ${enumName} is not mapped`);
             return Object.values(enumObject);
         } catch (error) {
             return this.handleError<string>(methodName, error);
