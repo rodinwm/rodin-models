@@ -137,7 +137,7 @@ model Subscription {
 
 model RodPic {
   id        String   @id @default(uuid())
-  imageUrl  String
+  content   Json     // nouveau champ JSON
   createdAt DateTime @default(now())
 
   user   User   @relation(fields: [userId], references: [id])
