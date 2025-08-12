@@ -92,6 +92,9 @@ model User {
   ageRange          AgeRange
   isActive          Boolean  @default(true)
 
+  resetToken        String?
+  resetTokenExpiry  DateTime?
+
   profession Profession
 
   timeSessions    TimeSession[]
