@@ -46,6 +46,8 @@ CREATE TABLE "User" (
     "emergencyCode" TEXT NOT NULL DEFAULT '0000',
     "ageRange" "AgeRange" NOT NULL,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "resetToken" TEXT,
+    "resetTokenExpiry" TIMESTAMP(3),
     "profession" "Profession" NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
@@ -89,7 +91,7 @@ CREATE TABLE "Subscription" (
 -- CreateTable
 CREATE TABLE "RodPic" (
     "id" TEXT NOT NULL,
-    "imageUrl" TEXT NOT NULL,
+    "content" JSONB NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "userId" TEXT NOT NULL,
 
