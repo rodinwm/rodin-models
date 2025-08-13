@@ -140,9 +140,9 @@ model Subscription {
 
 model RodPic {
   id         String   @id @default(uuid())
-  firstPic   String   // Base64 de la première image
-  secondPic  String   // Base64 de la deuxième image
-  date       Int      // Timestamp de la date de la photo
+  firstPic   String   
+  secondPic  String   
+  date       BigInt   
   createdAt  DateTime @default(now())
 
   user   User   @relation(fields: [userId], references: [id])
