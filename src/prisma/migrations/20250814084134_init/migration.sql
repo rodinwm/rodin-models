@@ -91,7 +91,9 @@ CREATE TABLE "Subscription" (
 -- CreateTable
 CREATE TABLE "RodPic" (
     "id" TEXT NOT NULL,
-    "content" JSONB NOT NULL,
+    "firstPic" TEXT NOT NULL,
+    "secondPic" TEXT NOT NULL,
+    "date" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "userId" TEXT NOT NULL,
 
