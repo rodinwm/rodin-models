@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "RodPic" ALTER COLUMN "date" SET DATA TYPE BIGINT;
